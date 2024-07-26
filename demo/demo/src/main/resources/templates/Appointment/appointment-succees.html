@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Appointment Success</title>
+</head>
+<body>
+<h1>Appointment Successful</h1>
+<p>Your appointment has been successfully booked!</p>
+<p>Patient ID: <span th:text="${appointment.patient.id}"></span></p>
+<p>Doctor ID: <span th:text="${appointment.doctor.id}"></span></p>
+<p>Date and Time: <span th:text="${appointment.appointmentDateTime}"></span></p>
+<a href="/appointments">Back to booking</a>
+</body>
+</html>
