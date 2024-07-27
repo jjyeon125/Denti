@@ -1,4 +1,4 @@
-package com.example.demo.reservation.model;
+package com.example.demo.login.controller.reservation.model;
 
 
 import jakarta.persistence.Entity;
@@ -16,6 +16,10 @@ public class Dentist {
 
     private String name;
     private String specialization;
+
+    private String contents;
+
+
 
     public Long getId() {
         return id;
@@ -40,4 +44,10 @@ public class Dentist {
     public void setSpecialization(String specialization) {
         this.specialization = specialization;
     }
-}
+    public String getContents() {
+        return contents;
+    }
+
+    public void setContents(String contents) {
+        this.contents = contents;
+    }}
