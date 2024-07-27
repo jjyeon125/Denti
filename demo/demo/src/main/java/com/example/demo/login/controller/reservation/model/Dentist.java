@@ -1,4 +1,4 @@
-package com.example.demo.reservation.model;
+package com.example.demo.login.controller.reservation.model;
 
 
 import jakarta.persistence.Entity;

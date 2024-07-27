@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title th:text="${doctor.id == null ? 'Add Doctor' : 'Edit Doctor'}"></title>
+  <title th:text="${dentist.id == null ? 'Add dentist' : 'Edit dentist'}"></title>
 </head>
 <body>
-<h1 th:text="${doctor.id == null ? 'Add Doctor' : 'Edit Doctor'}"></h1>
-<form action="#" th:action="@{${doctor.id == null ? '/doctors' : '/doctors/' + doctor.id}}" th:object="${doctor}" method="post">
+<h1 th:text="${dentist.id == null ? 'Add dentist' : 'Edit dentist'}"></h1>
+<form action="#" th:action="@{${dentist.id == null ? '/dentist' : '/dentist/' + dentist.id}}" th:object="${dentist}" method="post">
   <label for="name">Name:</label>
   <input type="text" id="name" th:field="*{name}" required />
   <br/>
@@ -13,9 +13,12 @@
   <label for="specialization">Specialization:</label>
   <input type="text" id="specialization" th:field="*{specialization}" required />
   <br/>
+  <label for="contents">Specialization:</label>
+  <input type="text" id="contents" th:field="*{contents}" required />
+  <br/>
 
   <button type="submit">Save</button>
-  <a href="/doctors">Cancel</a>
+  <a href="/dentist">Cancel</a>
 </form>
 </body>
 </html>

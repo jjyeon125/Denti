@@ -1,8 +1,8 @@
-package com.example.demo.reservation.controller;
+package com.example.demo.login.controller.reservation.controller;
 
 
-import com.example.demo.reservation.Service.DentistService;
-import com.example.demo.reservation.model.Dentist;
+import com.example.demo.login.controller.reservation.Service.DentistService;
+import com.example.demo.login.controller.reservation.model.Dentist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

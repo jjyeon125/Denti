@@ -1,4 +1,4 @@
-package com.example.demo.reservation.dto;
+package com.example.demo.login.controller.reservation.dto;
 
 import java.time.LocalDateTime;
 

@@ -1,10 +1,9 @@
-package com.example.demo.reservation.controller;
+package com.example.demo.login.controller.reservation.controller;
 
 
-import com.example.demo.reservation.Service.AppointmentService;
-import com.example.demo.reservation.dto.AppointmentRequestDTO;
-import com.example.demo.reservation.model.Appointment;
-import com.example.demo.reservation.repository.AppointmentRepository;
+import com.example.demo.login.controller.reservation.Service.AppointmentService;
+import com.example.demo.login.controller.reservation.model.Appointment;
+import com.example.demo.login.controller.reservation.dto.AppointmentRequestDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,9 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/appointments")

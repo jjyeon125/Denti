@@ -1,11 +1,11 @@
-package com.example.demo.reservation.Service;
+package com.example.demo.login.controller.reservation.Service;
 
+import com.example.demo.login.controller.reservation.model.Appointment;
 import com.example.demo.login.repository.LoginRepository;
-import com.example.demo.reservation.dto.AppointmentRequestDTO;
-import com.example.demo.reservation.model.Appointment;
-import com.example.demo.reservation.model.Dentist;
-import com.example.demo.reservation.repository.AppointmentRepository;
-import com.example.demo.reservation.repository.DentistRepository;
+import com.example.demo.login.controller.reservation.dto.AppointmentRequestDTO;
+import com.example.demo.login.controller.reservation.model.Dentist;
+import com.example.demo.login.controller.reservation.repository.AppointmentRepository;
+import com.example.demo.login.controller.reservation.repository.DentistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +32,7 @@ public class AppointmentService {
             throw new IllegalArgumentException("Appointment time is already booked");
         }
 
-        User patient = LoginRepository.findById(requestDTO.getUsertId())
+        Users patient = LoginRepository.findById(requestDTO.getUsertId())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user ID"));
         Dentist dentist = dentistRepository.findById(requestDTO.getDentistId())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid dentist ID"));
