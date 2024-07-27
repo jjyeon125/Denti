@@ -1,8 +1,9 @@
-package com.example.demo.login.controller.reservation.controller;
+package com.example.demo.reservation.controller;
 
 
-import com.example.demo.login.controller.reservation.Service.DentistService;
-import com.example.demo.login.controller.reservation.model.Dentist;
+import com.example.demo.reservation.Service.DentistService;
+import com.example.demo.reservation.model.Dentist;
+import com.example.demo.review.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,9 @@ public class DentistController {
 
     @Autowired
     private DentistService dentistService;
+
+    @Autowired
+    private ReviewService reviewService;
 
     @GetMapping
     public String listDentists(Model model) {
@@ -39,7 +43,8 @@ public class DentistController {
     public String viewDentist(@PathVariable Long id, Model model) {
         Dentist dentist = dentistService.getDentistById(id);
         model.addAttribute("dentist", dentist);
-        return "dentist-view";
+        model.addAttribute("reviews", reviewService.getReviewsForDentist(id));
+        return "doctor-view";
     }
 
     @GetMapping("/edit/{id}")
@@ -54,4 +59,5 @@ public class DentistController {
         dentistService.deleteDentist(id);
         return "redirect:/dentists";
     }
+
 }

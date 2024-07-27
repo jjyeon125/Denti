@@ -1,9 +1,9 @@
-package com.example.demo.login.controller.reservation.controller;
+package com.example.demo.reservation.controller;
 
 
-import com.example.demo.login.controller.reservation.Service.AppointmentService;
-import com.example.demo.login.controller.reservation.model.Appointment;
-import com.example.demo.login.controller.reservation.dto.AppointmentRequestDTO;
+import com.example.demo.reservation.Service.AppointmentService;
+import com.example.demo.entity.Appointment;
+import com.example.demo.dto.AppointmentRequestDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

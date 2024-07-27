@@ -1,7 +1,7 @@
-package com.example.demo.login.controller.reservation.Service;
+package com.example.demo.reservation.Service;
 
-import com.example.demo.login.controller.reservation.model.Dentist;
-import com.example.demo.login.controller.reservation.repository.DentistRepository;
+import com.example.demo.reservation.model.Dentist;
+import com.example.demo.reservation.repository.DentistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,10 +1,10 @@
-package com.example.demo.login.controller.reservation.dto;
+package com.example.demo.dto;
 
 import java.time.LocalDateTime;
 
 public class AppointmentRequestDTO {
 
-        private Long userId;
+        private String userId;
         private Long dentistId;
         private int year;
         private int month;
@@ -16,7 +16,7 @@ public class AppointmentRequestDTO {
             // 기본 생성자
         }
 
-        public AppointmentRequestDTO(Long userId, Long dentistId, int year, int month, int date, int hour) {
+        public AppointmentRequestDTO(String userId, Long dentistId, int year, int month, int date, int hour) {
             this.userId = userId;
             this.dentistId = dentistId;
             this.year = year;
@@ -25,19 +25,19 @@ public class AppointmentRequestDTO {
             this.hour = hour;
         }
 
-        public Long getUserId() {
+        public String getUserId() {
             return userId;
         }
 
-        public void setUserId(Long patientId) {
-            this.userId = patientId;
+        public void setUserId(String userId) {
+            this.userId = userId;
         }
 
         public Long getDentistId() {
             return dentistId;
         }
 
-        public void setDentistId(Long dentistrId) {
+        public void setDentistId(Long dentistId) {
             this.dentistId = dentistId;
         }
 
@@ -76,5 +76,7 @@ public class AppointmentRequestDTO {
         public LocalDateTime toAppointmentDateTime() {
             return LocalDateTime.of(year, month, date, hour, 0); // 분, 초는 0으로 설정
         }
-    }
+
+
 }
+

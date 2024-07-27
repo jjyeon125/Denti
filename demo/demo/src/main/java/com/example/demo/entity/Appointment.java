@@ -1,5 +1,6 @@
-package com.example.demo.login.controller.reservation.model;
+package com.example.demo.entity;
 
+import com.example.demo.reservation.model.Dentist;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -12,11 +13,11 @@ public class Appointment {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "member_id", nullable = false)
-    private  User user;
+    @JoinColumn(name = "user_id", nullable = false)
+    private  Users user;
 
     @ManyToOne
-    @JoinColumn(name = "denti_id", nullable = false)
+    @JoinColumn(name = "dentist_id", nullable = false)
     private Dentist dentist;
 
     private LocalDateTime appointmentDateTime;
@@ -42,11 +43,11 @@ public class Appointment {
         this.id = id;
     }
 
-    public User getUser() {
+    public Users getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Users user) {
         this.user = user;
     }
 

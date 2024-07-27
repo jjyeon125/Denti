@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Write a Review</title>
+</head>
+<body>
+<h1>Write a Review</h1>
+<form action="#" th:action="@{/reviews}" method="post">
+  <input type="hidden" name="appointmentId" th:value="${appointmentId}" />
+  <label for="content">Review Content:</label>
+  <textarea id="content" name="content" required></textarea>
+  <br/>
+  <button type="submit">Submit Review</button>
+</form>
+<a href="/dentist">Back to list</a>
+</body>
+</html>

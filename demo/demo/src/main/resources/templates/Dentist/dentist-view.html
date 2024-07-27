@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Dentist Details</title>
+  <title>Doctor Details</title>
 </head>
 <body>
-<h1>Dentist Details</h1>
-<p>ID: <span th:text="${dentist.id}"></span></p>
-<p>Name: <span th:text="${dentist.name}"></span></p>
-<p>Specialization: <span th:text="${dentist.specialization}"></span></p>
-<p>contents: <span th:text="${dentist.contents}"></span></p>
-<a href="/dentists">Back to list</a>
+<h1>Doctor Details</h1>
+<p>ID: <span th:text="${doctor.id}"></span></p>
+<p>Name: <span th:text="${doctor.name}"></span></p>
+<p>Specialization: <span th:text="${doctor.specialization}"></span></p>
+<h2>Reviews</h2>
+<table border="1">
+  <thead>
+  <tr>
+    <th>Review ID</th>
+    <th>Content</th>
+    <th>Created Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="review : ${reviews}">
+    <td th:text="${review.id}"></td>
+    <td th:text="${review.content}"></td>
+    <td th:text="${review.createdDate}"></td>
+  </tr>
+  </tbody>
+</table>
+<a href="/doctors">Back to list</a>
+<a th:href="@{/reviews/new/{appointmentId}(appointmentId=${doctor.id})}">Write a Review</a>
 </body>
 </html>

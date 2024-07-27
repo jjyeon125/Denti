@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Doctor Reviews</title>
+</head>
+<body>
+<h1>Doctor Reviews</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Review ID</th>
+        <th>Content</th>
+        <th>Created Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="review : ${reviews}">
+        <td th:text="${review.id}"></td>
+        <td th:text="${review.content}"></td>
+        <td th:text="${review.createdDate}"></td>
+    </tr>
+    </tbody>
+</table>
+<a href="/doctors">Back to list</a>
+</body>
+</html>

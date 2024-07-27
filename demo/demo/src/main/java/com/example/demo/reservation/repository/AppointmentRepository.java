@@ -1,6 +1,6 @@
-package com.example.demo.login.controller.reservation.repository;
+package com.example.demo.reservation.repository;
 
-import com.example.demo.login.controller.reservation.model.Appointment;
+import com.example.demo.entity.Appointment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
