@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Doctor Details</title>
+</head>
+<body>
+<h1>Doctor Details</h1>
+<p>ID: <span th:text="${doctor.id}"></span></p>
+<p>Name: <span th:text="${doctor.name}"></span></p>
+<p>Specialization: <span th:text="${doctor.specialization}"></span></p>
+<a href="/doctors">Back to list</a>
+</body>
+</html>

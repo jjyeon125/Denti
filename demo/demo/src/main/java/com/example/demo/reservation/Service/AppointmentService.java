@@ -33,9 +33,9 @@ public class AppointmentService {
         }
 
         User patient = LoginRepository.findById(requestDTO.getUsertId())
-                .orElseThrow(() -> new IllegalArgumentException("Invalid patient ID"));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user ID"));
         Dentist dentist = dentistRepository.findById(requestDTO.getDentistId())
-                .orElseThrow(() -> new IllegalArgumentException("Invalid doctor ID"));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid dentist ID"));
 
         LocalDateTime appointmentDateTime = requestDTO.toAppointmentDateTime();
 

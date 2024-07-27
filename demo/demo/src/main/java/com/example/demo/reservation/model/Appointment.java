@@ -2,7 +2,6 @@ package com.example.demo.reservation.model;
 
 import jakarta.persistence.*;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity

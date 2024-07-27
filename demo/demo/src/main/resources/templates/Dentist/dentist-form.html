@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="${doctor.id == null ? 'Add Doctor' : 'Edit Doctor'}"></title>
+</head>
+<body>
+<h1 th:text="${doctor.id == null ? 'Add Doctor' : 'Edit Doctor'}"></h1>
+<form action="#" th:action="@{${doctor.id == null ? '/doctors' : '/doctors/' + doctor.id}}" th:object="${doctor}" method="post">
+  <label for="name">Name:</label>
+  <input type="text" id="name" th:field="*{name}" required />
+  <br/>
+
+  <label for="specialization">Specialization:</label>
+  <input type="text" id="specialization" th:field="*{specialization}" required />
+  <br/>
+
+  <button type="submit">Save</button>
+  <a href="/doctors">Cancel</a>
+</form>
+</body>
+</html>

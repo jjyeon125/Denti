@@ -37,8 +37,8 @@ public class AppointmentRequestDTO {
             return dentistId;
         }
 
-        public void setDentistId(Long doctorId) {
-            this.dentistId = doctorId;
+        public void setDentistId(Long dentistrId) {
+            this.dentistId = dentistId;
         }
 
         public int getYear() {
