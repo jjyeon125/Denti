@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>User Login</title>
 </head>
 <body>
 <h1>User Login Page</h1>
-<form action="/login" method="post">
+<form action="/user/login" method="post">
     <label for="userId">ID:</label>
     <input type="text" id="userId" name="userId"><br><br>
     <label for="userPwd">Password:</label>
     <input type="password" id="userPwd" name="userPwd"><br><br>
     <input type="submit" value="Login">
 </form>
-<br><br><a href="/register">회원가입</a>
+<br><br><a href="/user/join">회원가입</a>
 </body>
 </html>

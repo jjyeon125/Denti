@@ -6,7 +6,7 @@ import com.example.demo.login.repository.LoginRepository;
 import com.example.demo.dto.AppointmentRequestDTO;
 import com.example.demo.reservation.model.Dentist;
 import com.example.demo.reservation.repository.AppointmentRepository;
-import com.example.demo.reservation.repository.DentistRepository;
+import com.example.demo.reservation.repository.ReservationDentistRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class AppointmentService {
     @Autowired
     private LoginRepository loginRepository;
     @Autowired
-    private DentistRepository dentistRepository;
+    private ReservationDentistRepository reservationDentistRepository;
 
     public List<Appointment> getAllAppointments() {
         return appointmentRepository.findAll();
@@ -37,7 +37,7 @@ public class AppointmentService {
 
         Users user = (Users) loginRepository.findByUserId(requestDTO.getUserId())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user ID"));
-        Dentist dentist = dentistRepository.findById(requestDTO.getDentistId())
+        Dentist dentist = reservationDentistRepository.findById(requestDTO.getDentistId())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid dentist ID"));
 
         LocalDateTime appointmentDateTime = requestDTO.toAppointmentDateTime();

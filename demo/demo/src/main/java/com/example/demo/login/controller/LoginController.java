@@ -48,9 +48,9 @@ public class LoginController {
         return "redirect:/";
     }
 
-    @GetMapping("/dentist/login")
+    @GetMapping("/dentist/login/form")
     public String dentistLoginForm() {
-        return "dentist/login";
+        return "Dentist/login";
     }
 
     @PostMapping("/dentist/login")
