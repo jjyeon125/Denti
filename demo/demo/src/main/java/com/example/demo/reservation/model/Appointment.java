@@ -28,7 +28,7 @@ public class Appointment {
         // 기본 생성자
     }
 
-    public Appointment(User user, Dentist dentist, LocalDateTime appointmentDateTime) {
+    public Appointment(Users user, Dentist dentist, LocalDateTime appointmentDateTime) {
         this.user = user;
         this.dentist = dentist;
         this.appointmentDateTime = appointmentDateTime;
