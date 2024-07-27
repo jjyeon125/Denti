@@ -7,7 +7,16 @@ CREATE TABLE users (
     user_pwd VARCHAR(255) NOT NULL,
     user_birth DATE NOT NULL,
     user_phone VARCHAR(255),
+    user_mail VARCHAR(255),
     gender VARCHAR(255)
 ) ENGINE=INNODB;
 
--- 저도 긁어와서 잘 모릅니다;; 잘 아시는 분은 수정 부탁드립니다!
+CREATE TABLE Dentist (
+    doc_no INT PRIMARY KEY AUTO_INCREMENT,
+    doc_id VARCHAR(255) NOT NULL UNIQUE,
+    doc_name VARCHAR(255) NOT NULL,
+    doc_hospital VARCHAR(255) NOT NULL,
+    doc_pwd VARCHAR(255) NOT NULL,
+    doc_phone VARCHAR(255),
+    doc_mail VARCHAR(255)
+) ENGINE=INNODB
