@@ -6,13 +6,16 @@
 </head>
 <body>
 <h1>User Login Page</h1>
-<form action="/user/login" method="post">
+<form action="/login" method="post">
     <label for="userId">ID:</label>
-    <input type="text" id="userId" name="userId"><br><br>
+    <input type="text" id="userId" name="userId" required><br><br>
     <label for="userPwd">Password:</label>
-    <input type="password" id="userPwd" name="userPwd"><br><br>
+    <input type="password" id="userPwd" name="userPwd" required><br><br>
     <input type="submit" value="Login">
 </form>
-<br><br><a href="/user/join">회원가입</a>
+<div th:if="${loginError}" style="color: red;">
+    <p th:text="${loginError}"></p>
+</div>
+<br><br><a href="/register">회원가입</a>
 </body>
 </html>

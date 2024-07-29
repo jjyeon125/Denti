@@ -43,7 +43,8 @@ public class LoginController {
         }
 
         session.setAttribute("user", user);
-        logger.info("User {} logged in and stored in session");
+        session.setAttribute("userName", user.getUserName());
+        logger.info("User {} logged in and stored in session", user.getUserName());
 
         return "redirect:/";
     }
@@ -53,38 +54,67 @@ public class LoginController {
         return "Dentist/login";
     }
 
-    @PostMapping("/dentist/login")
+    @PostMapping("/dentist/login/form")
     public String dentistLogin(DentistDTO dentistDTO, HttpSession session, RedirectAttributes redirectAttributes) {
         Dentist dentist = dentistService.login(dentistDTO);
 
         if (dentist == null) {
             redirectAttributes.addFlashAttribute("loginError", "회원정보가 일치하지 않습니다.");
-            return "redirect:/dentist/login";
+            return "redirect:/dentist/login/form";
         }
 
         session.setAttribute("dentist", dentist);
-        logger.info("Dentist {} logged in and stored in session");
+        session.setAttribute("dentistName", dentist.getDocName());
+        logger.info("Dentist {} logged in and stored in session", dentist.getDocName());
 
         return "redirect:/";
+    }
+
+    @GetMapping("/register")
+    public String registerForm(Model model) {
+        model.addAttribute("userDTO", new UserDTO());
+        return "user/register";
+    }
+
+    @PostMapping("/register")
+    public String register(UserDTO userDTO, Model model, RedirectAttributes redirectAttributes) {
+        logger.info("Received registration request for user: {}", userDTO.getUserId());
+        try {
+            userService.register(userDTO);
+            logger.info("User registered successfully: {}", userDTO.getUserId());
+            redirectAttributes.addFlashAttribute("registerSuccess", "회원가입이 완료되었습니다.");
+            return "redirect:/login";
+        } catch (Exception e) {
+            logger.error("Error during registration: ", e);
+            model.addAttribute("registerError", e.getMessage());
+            return "user/register";
+        }
+    }
+
+    @GetMapping("/dentist/register")
+    public String dentistRegisterForm(Model model) {
+        model.addAttribute("dentistDTO", new DentistDTO());
+        return "Dentist/register";
+    }
+
+    @PostMapping("/dentist/register")
+    public String dentistRegister(DentistDTO dentistDTO, Model model, RedirectAttributes redirectAttributes) {
+        logger.info("Received registration request for dentist: {}", dentistDTO.getDentistId());
+        try {
+            dentistService.register(dentistDTO);
+            logger.info("Dentist registered successfully: {}", dentistDTO.getDentistId());
+            redirectAttributes.addFlashAttribute("registerSuccess", "회원가입이 완료되었습니다.");
+            return "redirect:/dentist/login";
+        } catch (Exception e) {
+            logger.error("Error during registration: ", e);
+            model.addAttribute("registerError", e.getMessage());
+            return "Dentist/register";
+        }
     }
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/";
-    }
-
-    @PostMapping("/register")
-    public String register(UserDTO userDTO, Model model) {
-        logger.info("Received registration request for user: {}", userDTO.getUserId());
-        try {
-            userService.register(userDTO);
-            logger.info("User registered successfully: {}", userDTO.getUserId());
-            return "redirect:/login";
-        } catch (Exception e) {
-            logger.error("Error during registration: ", e);
-            model.addAttribute("registerError", e.getMessage());
-            return "register";
-        }
     }
 }

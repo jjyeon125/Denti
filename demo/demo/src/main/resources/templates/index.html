@@ -1,7 +1,20 @@
-메인 페이지
-
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+</head>
+<body>
+<h1>메인 페이지</h1>
+<div th:if="${session.userName}">
+    <p>환영합니다, <span th:text="${session.userName}"></span>님!</p>
+</div>
+<div th:if="${session.dentistName}">
+    <p>환영합니다, <span th:text="${session.dentistName}"></span>님!</p>
+</div>
 <br><br><a href="/user/login">환자 로그인</a>
 <br><br><a href="/user/join">환자 회원가입</a>
-
 <br><br><a href="/dentist/login">의사 로그인</a>
 <br><br><a href="/dentist/join">의사 회원가입</a>
+</body>
+</html>

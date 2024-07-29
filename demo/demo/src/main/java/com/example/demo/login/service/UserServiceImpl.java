@@ -3,6 +3,7 @@ package com.example.demo.login.service;
 import com.example.demo.dto.UserDTO;
 import com.example.demo.entity.Users;
 import com.example.demo.login.repository.LoginRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -11,6 +12,7 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     private final LoginRepository loginRepository;
 
+    @Autowired
     public UserServiceImpl(LoginRepository loginRepository) {
         this.loginRepository = loginRepository;
     }
@@ -40,5 +42,4 @@ public class UserServiceImpl implements UserService {
     public Object getAllUsers() {
         return loginRepository.findAll();
     }
-
 }

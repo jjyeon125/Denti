@@ -15,7 +15,21 @@ public class DentistService {
         this.dentistRepository = dentistRepository;
     }
 
+    public void register(DentistDTO dentistDTO) throws Exception {
+        if (dentistRepository.existsByDocId(dentistDTO.getDentistId())) {
+            throw new Exception("이미 존재하는 아이디입니다.");
+        }
+
+        Dentist dentist = Dentist.builder()
+                .docId(dentistDTO.getDentistId())
+                .docPwd(dentistDTO.getPassword())
+                .docName(dentistDTO.getName())
+                .build();
+
+        dentistRepository.save(dentist);
+    }
+
     public Dentist login(DentistDTO dentistDTO) {
-        return dentistRepository.findByDocIdAndDocPwd(dentistDTO.getDocId(), dentistDTO.getDocPwd());
+        return dentistRepository.findByDocIdAndDocPwd(dentistDTO.getDentistId(), dentistDTO.getPassword());
     }
 }

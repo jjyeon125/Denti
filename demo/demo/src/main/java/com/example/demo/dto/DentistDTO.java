@@ -1,24 +1,32 @@
 package com.example.demo.dto;
 
 public class DentistDTO {
-    private String docId;
-    private String docPwd;
+    private String dentistId;
+    private String password;
+    private String name;
 
-    // Constructors, getters, and setters
-
-    public String getDocId() {
-        return docId;
+    // Getters and Setters
+    public String getDentistId() {
+        return dentistId;
     }
 
-    public void setDocId(String docId) {
-        this.docId = docId;
+    public void setDentistId(String dentistId) {
+        this.dentistId = dentistId;
     }
 
-    public String getDocPwd() {
-        return docPwd;
+    public String getPassword() {
+        return password;
     }
 
-    public void setDocPwd(String docPwd) {
-        this.docPwd = docPwd;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

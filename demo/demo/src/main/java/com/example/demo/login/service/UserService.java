@@ -6,6 +6,5 @@ import com.example.demo.entity.Users;
 public interface UserService {
     Users login(UserDTO userDTO);
     void register(UserDTO userDTO) throws Exception;
-
     Object getAllUsers();
 }
