@@ -18,12 +18,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Users login(UserDTO userDTO) {
-        Optional<Users> user = loginRepository.findByUserIdAndUserPwd(userDTO.getUserId(), userDTO.getUserPwd());
-        return user.orElse(null);
-    }
-
-    @Override
     public void register(UserDTO userDTO) throws Exception {
         if (loginRepository.existsByUserId(userDTO.getUserId())) {
             throw new Exception("이미 존재하는 아이디입니다.");
@@ -33,9 +27,18 @@ public class UserServiceImpl implements UserService {
                 .userId(userDTO.getUserId())
                 .userPwd(userDTO.getUserPwd())
                 .userName(userDTO.getUserName())
+                .userBirth(userDTO.getUserBirth())
+                .userPhone(userDTO.getUserPhone())
+                .userGender(userDTO.getUserGender())
                 .build();
 
         loginRepository.save(user);
+    }
+
+    @Override
+    public Users login(UserDTO userDTO) {
+        Optional<Users> user = loginRepository.findByUserIdAndUserPwd(userDTO.getUserId(), userDTO.getUserPwd());
+        return user.orElse(null);
     }
 
     @Override

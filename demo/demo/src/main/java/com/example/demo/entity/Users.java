@@ -3,6 +3,8 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "users")
 @Getter
@@ -27,7 +29,7 @@ public class Users {
     private String userName;
 
     @Column(name = "user_birth")
-    private String userBirth;
+    private Date userBirth;
 
     @Column(name = "user_phone")
     private String userPhone;
@@ -35,7 +37,7 @@ public class Users {
     @Column(name = "user_gender")
     private String userGender;
 
-    public Users(int userNo, String userId, String userPwd, String userName, String userBirth, String userPhone, String userGender) {
+    public Users(int userNo, String userId, String userPwd, String userName, Date userBirth, String userPhone, String userGender) {
         this.userNo = userNo;
         this.userId = userId;
         this.userPwd = userPwd;
