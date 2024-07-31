@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <title th:text="${dentist.id == null ? 'Add dentist' : 'Edit dentist'}"></title>
 </head>
@@ -10,11 +10,14 @@
   <input type="text" id="name" th:field="*{name}" required />
   <br/>
 
-  <label for="specialization">Specialization:</label>
-  <input type="text" id="specialization" th:field="*{specialization}" required />
+  <label for="category">Specialization:</label>
+  <input type="text" id="category" th:field="*{category}" required />
   <br/>
   <label for="contents">Specialization:</label>
   <input type="text" id="contents" th:field="*{contents}" required />
+  <br/>
+  <label for="address">Specialization:</label>
+  <input type="text" id="address" th:field="*{address}" required />
   <br/>
 
   <button type="submit">Save</button>

@@ -1,6 +1,5 @@
 package com.example.demo.entity;
 
-import com.example.demo.reservation.model.Dentist;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -9,11 +8,12 @@ import java.time.LocalDateTime;
 public class Appointment {
 
     @Id
+    @Column(name = "Appointment_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_no", nullable = false)
     private  Users user;
 
     @ManyToOne

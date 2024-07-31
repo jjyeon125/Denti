@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Dentist List</title>
+  <title>치과 리스트</title>
 </head>
 <body>
 <h1>Dentist List</h1>
-<a href="/dentist/new">Add New dentist</a>
+<a href="/dentist/new">새치과작성</a>
 <table border="1">
   <thead>
   <tr>
@@ -21,9 +22,9 @@
     <td th:text="${dentist.name}"></td>
     <td th:text="${dentist.specialization}"></td>
     <td>
-      <a th:href="@{/dentists/{id}(id=${dentist.id})}">View</a> |
-      <a th:href="@{/dentists/edit/{id}(id=${dentist.id})}">Edit</a> |
-      <a th:href="@{/dentists/delete/{id}(id=${dentist.id})}" onclick="return confirm('Are you sure?');">Delete</a>
+      <a th:href="@{/dentists/{id}(id=${dentist.id})}">보기</a> |
+      <a th:href="@{/dentists/edit/{id}(id=${dentist.id})}">수정</a> |
+      <a th:href="@{/dentists/delete/{id}(id=${dentist.id})}" onclick="return confirm('Are you sure?');">삭제</a>
     </td>
   </tr>
   </tbody>

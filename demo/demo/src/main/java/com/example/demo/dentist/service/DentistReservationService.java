@@ -1,7 +1,7 @@
-package com.example.demo.reservation.Service;
+package com.example.demo.dentist.service;
 
-import com.example.demo.reservation.model.Dentist;
-import com.example.demo.reservation.repository.ReservationDentistRepository;
+import com.example.demo.entity.Dentist;
+import com.example.demo.dentist.repository.ReservationDentistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,4 +28,16 @@ public class DentistReservationService {
 
     public void deleteDentist(Long id) {
         reservationDentistRepository.deleteById(id);
-    }}
+    }
+
+    public List<Dentist> searchDentistByName(String name) {
+        return reservationDentistRepository.findByNameContaining(name);
+    }
+
+    public List<Dentist> searchDentistByCategory(String category) {
+        return reservationDentistRepository.findByCategory(category);
+    }
+
+
+
+}

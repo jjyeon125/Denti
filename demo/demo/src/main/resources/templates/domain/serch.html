@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>검색 결과</title>
+</head>
+<body>
+<h1>검색 결과</h1>
+<a href="/" th:href="@{/}">메인 페이지로 돌아가기</a>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>병원 이름</th>
+    <th>주소</th>
+    <th>카테고리</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="hospital : ${hospitals}">
+    <td th:text="${hospital.id}"></td>
+    <td th:text="${hospital.name}"></td>
+    <td th:text="${hospital.address}"></td>
+    <td th:text="${hospital.category}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

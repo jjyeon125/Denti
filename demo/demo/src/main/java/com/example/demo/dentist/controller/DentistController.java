@@ -1,8 +1,8 @@
-package com.example.demo.reservation.controller;
+package com.example.demo.dentist.controller;
 
 
-import com.example.demo.reservation.Service.DentistReservationService;
-import com.example.demo.reservation.model.Dentist;
+import com.example.demo.dentist.service.DentistReservationService;
+import com.example.demo.entity.Dentist;
 import com.example.demo.review.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -58,6 +58,30 @@ public class DentistController {
     public String deletedentist(@PathVariable Long id) {
         dentistReservationService.deleteDentist(id);
         return "redirect:/dentists";
+    }
+
+
+    @GetMapping("/")
+    public String index(Model model) {
+        return "index"; // 메인 페이지
+    }
+
+    @GetMapping("/dentist")
+    public String searchDentist(@RequestParam(required = false) String name,
+                                  @RequestParam(required = false) String category,
+                                  Model model) {
+        List<Dentist> dentists;
+
+        if (name != null && !name.isEmpty()) {
+            dentists = dentistReservationService.searchDentistByName(name);
+        } else if (category != null && !category.isEmpty()) {
+            dentists = dentistReservationService.searchDentistByCategory(category);
+        } else {
+            dentists = List.of(); // 빈 리스트 반환
+        }
+
+        model.addAttribute("dentists", dentists);
+        return "index"; // 검색 결과를 보여주는 페이지
     }
 
 }

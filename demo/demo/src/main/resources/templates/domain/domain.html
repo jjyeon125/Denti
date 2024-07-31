@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>병원 검색</title>
+
+</head>
+<body>
+<h1>병원 검색</h1>
+<form th:action="@{/hospitals}" method="get">
+    <label for="name">병원 이름:</label>
+    <input type="text" id="name" name="name" />
+    <br>
+    <label for="category">카테고리:</label>
+    <input type="text" id="category" name="category" />
+    <br>
+    <button type="submit">검색</button>
+</form>
+<hr>
+<h2>검색 결과</h2>
+<div th:if="${hospitals != null}">
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>병원 이름</th>
+            <th>주소</th>
+            <th>카테고리</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="hospital : ${hospitals}">
+            <td th:text="${hospital.id}"></td>
+            <td th:text="${hospital.name}"></td>
+            <td th:text="${hospital.address}"></td>
+            <td th:text="${hospital.category}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

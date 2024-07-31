@@ -1,10 +1,7 @@
-package com.example.demo.reservation.model;
+package com.example.demo.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity(name = "ReservationDentist")
 
@@ -12,14 +9,21 @@ public class Dentist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "dentist_id")
     private Long id;
 
     private String name;
-    private String specialization;
-
+    private String category;
     private String contents;
+    private String address;
 
+    public String getAddress() {
+        return address;
+    }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public Long getId() {
         return id;
@@ -37,12 +41,12 @@ public class Dentist {
         this.name = name;
     }
 
-    public String getSpecialization() {
-        return specialization;
+    public String getCategory() {
+        return category;
     }
 
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
+    public void setCategory(String category) {
+        this.category = category;
     }
     public String getContents() {
         return contents;

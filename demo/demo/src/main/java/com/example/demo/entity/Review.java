@@ -8,6 +8,7 @@ public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "review_id")
     private Long id;
 
     @ManyToOne
@@ -17,6 +18,7 @@ public class Review {
     @Column(nullable = false)
     private String content;
 
+    @Column(name = "created_date")
     private LocalDateTime createdDate;
 
     // 생성자
