@@ -81,6 +81,7 @@ public class DentistController {
         }
 
         model.addAttribute("dentists", dentists);
+        model.addAttribute("address", dentists.isEmpty() ? "" : dentists.get(0).getAddress());
         return "index"; // 검색 결과를 보여주는 페이지
     }
 
