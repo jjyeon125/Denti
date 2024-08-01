@@ -1,12 +1,10 @@
 package com.example.demo.dto;
 
-import java.util.Date;
-
 public class UserDTO {
     private String userId;
     private String userName;
     private String userPwd;
-    private Date userBirth;
+    private String userBirth;
     private String userPhone;
     private String userGender;
 
@@ -35,11 +33,11 @@ public class UserDTO {
         this.userPwd = userPwd;
     }
 
-    public Date getUserBirth() {
+    public String getUserBirth() {
         return userBirth;
     }
 
-    public void setUserBirth(Date userBirth) {
+    public void setUserBirth(String userBirth) {
         this.userBirth = userBirth;
     }
 
