@@ -33,6 +33,11 @@ public class LoginController {
         return "register";
     }
 
+    @GetMapping("/RegisterSuccess")
+    public String showRegisterSuccessPage() {
+        return "RegisterSuccess";
+    }
+
     @PostMapping("/register")
     public String register(UserDTO userDTO, Model model, RedirectAttributes redirectAttributes) {
         logger.info("Attempting to register user: {}", userDTO);
