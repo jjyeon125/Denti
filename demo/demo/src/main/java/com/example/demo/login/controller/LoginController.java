@@ -1,6 +1,7 @@
 package com.example.demo.login.controller;
 
 import com.example.demo.dto.UserDTO;
+import com.example.demo.entity.Users;
 import com.example.demo.login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -55,5 +56,29 @@ public class LoginController {
             redirectAttributes.addFlashAttribute("error", e.getMessage());
             return "redirect:/register";
         }
+    }
+
+    @PostMapping("/login")
+    public String login(UserDTO userDTO, Model model, RedirectAttributes redirectAttributes) {
+        logger.info("Attempting to login user: {}", userDTO);
+
+        Users user = userService.login(userDTO);
+        if (user != null) {
+            model.addAttribute("userName", user.getUserName());
+            return "Mypage";
+        } else {
+            redirectAttributes.addFlashAttribute("loginError", "Invalid username or password");
+            return "redirect:/login";
+        }
+    }
+
+    @GetMapping("/Mypage")
+    public String showMypage(Model model) {
+        return "Mypage";
+    }
+
+    @GetMapping("/logout")
+    public String logout() {
+        return "redirect:/";
     }
 }

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Page</title>
+</head>
+<body>
+<h1 th:text="${userName} + '님 환영합니다'"></h1>
+<form action="/logout" method="get">
+    <input type="submit" value="Logout">
+</form>
+</body>
+</html>
