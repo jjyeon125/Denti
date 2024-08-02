@@ -12,6 +12,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class LoginController {
 
@@ -59,13 +61,13 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(UserDTO userDTO, Model model, RedirectAttributes redirectAttributes) {
+    public String login(UserDTO userDTO, Model model, RedirectAttributes redirectAttributes, HttpSession session) {
         logger.info("Attempting to login user: {}", userDTO);
 
         Users user = userService.login(userDTO);
         if (user != null) {
-            model.addAttribute("userName", user.getUserName());
-            return "Mypage";
+            session.setAttribute("userName", user.getUserName());
+            return "redirect:/Mypage";
         } else {
             redirectAttributes.addFlashAttribute("loginError", "Invalid username or password");
             return "redirect:/login";
@@ -73,12 +75,15 @@ public class LoginController {
     }
 
     @GetMapping("/Mypage")
-    public String showMypage(Model model) {
+    public String showMypage(Model model, HttpSession session) {
+        String userName = (String) session.getAttribute("userName");
+        model.addAttribute("userName", userName);
         return "Mypage";
     }
 
     @GetMapping("/logout")
-    public String logout() {
+    public String logout(HttpSession session) {
+        session.invalidate();
         return "redirect:/";
     }
 }
