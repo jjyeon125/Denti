@@ -1,0 +1,70 @@
+#dentiLogo{
+    width: 72px;
+    display: block;
+    margin: auto;
+    margin-top: 15%;
+}
+
+#singInContainer2 input[type=text], #singInContainer2 input[type=password], #singInContainer2 input[type=email]{
+    font-family: 'Pretendard-Regular';
+    font-size: 20px;
+    width: 330px;
+    height: 60px;
+    border: 1px solid #D7DCDF;
+    border-radius : 10px;
+    margin-bottom: 6px;
+    padding-left: 10px;
+}
+
+#singInContainer2 input[type=text]::placeholder, #singInContainer2 input[type=password]::placeholder, #singInContainer2 input[type=email]::placeholder{
+    color: #D7DCDF;
+}
+
+form{
+    margin-top: 15% !important;
+    width: 350px;
+    display: block;
+    margin: auto;
+}
+.agreeContainer{
+    margin-top: 5%;
+}
+.agreeContainer span{
+    font-family: 'Pretendard-Regular';
+    color: #A7ADB1;
+}
+
+.agreeContainer .agreeAll{
+    text-decoration: #A7ADB1;
+    font-size: 20px;
+}
+
+.agreeContainer .agree{
+    text-decoration: #A7ADB1;
+    font-size: 16px;
+    text-decoration: underline;
+}
+
+.agreeContainer label{
+    display: flex;
+    justify-content: space-between
+}
+
+#singInContainer2 input[type=submit]{
+    font-family: 'Pretendard-Regular';
+    font-size: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 50px;
+    background-color: #467AFF;
+    border-radius: 10px;
+    color: #FFFFFF;
+    border: 0;
+}
+
+#singInContainer2 input[type=submit]:hover{
+    background-color: #0047FF;
+    color: #FFFFFF;
+}

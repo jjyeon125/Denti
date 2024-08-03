@@ -1,0 +1,95 @@
+#dentiLogo{
+    width: 72px;
+    display: block;
+    margin: auto;
+    margin-top: 15%;
+}
+
+#LoginContainer .btn{
+    display: none;
+}
+.LoginTypeContainer{
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15%;
+    width: 350px;
+}
+.LoginTypeContainer input + label{
+    font-family: 'Pretendard-Regular';
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 165px;
+    height: 60px;
+    border-radius: 30px;
+    background-color: #EEF1F6;
+    color: #7D8488;
+}
+.LoginTypeContainer input[type=radio]:checked + label{
+    background-color: #467AFF;
+    color: white;
+}
+
+#LoginContainer input[type=text], #LoginContainer input[type=password]{
+    font-family: 'Pretendard-Regular';
+    font-size: 20px;
+    width: 330px;
+    height: 60px;
+    border: 1px solid #D7DCDF;
+    border-radius : 10px;
+    margin-bottom: 6px;
+    padding-left: 10px;
+}
+#LoginContainer input[type=text]::placeholder, #LoginContainer input[type=password]::placeholder{
+    color: #D7DCDF;
+}
+#LoginContainer form label{
+    font-family: 'Pretendard-Regular';
+    color: #A7ADB1;
+    font-size: 16px;
+}
+#LoginContainer input[type=submit]{
+    font-family: 'Pretendard-Regular';
+    font-size: 20px;
+    width : 340px;
+    height: 60px;
+    border-radius: 10px;
+    border: 0;
+    background-color: #467AFF;
+    color: #FFFFFF;
+    margin-top: 10px;
+}
+#LoginContainer .loginMenu{
+    display: flex;
+    justify-content: space-around;
+    width: 280px;
+    margin: auto;
+    margin-top: 10px;
+}
+#LoginContainer .loginMenu a, #LoginContainer .loginMenu span{
+    font-size: 16px;
+    color: #A7ADB1;
+}
+#LoginContainer .socialLogin p{
+    font-family: 'Pretendard-Regular';
+    font-size: 16px;
+    color: #A7ADB1;
+    text-align: center;
+}
+#LoginContainer .socialLoginIcon{
+    display: flex;
+    justify-content: space-around;
+    width: 300px;
+    margin: auto;
+}
+#LoginContainer .socialLoginIcon img{
+    width: 55px;
+    height: 55px;
+}
+#LoginContainer .loginFormContainer{
+    width: 340px;
+    margin: auto;
+    margin-top: 5%;
+}

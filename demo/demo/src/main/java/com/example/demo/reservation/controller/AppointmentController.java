@@ -1,6 +1,5 @@
 package com.example.demo.reservation.controller;
 
-
 import com.example.demo.reservation.Service.AppointmentService;
 import com.example.demo.entity.Appointment;
 import com.example.demo.dto.AppointmentRequestDTO;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/appointments")
+@RequestMapping("/appointment-form")
 public class AppointmentController {
 
     @Autowired
@@ -22,7 +21,7 @@ public class AppointmentController {
     @GetMapping
     public String showAppointmentForm(Model model) {
         model.addAttribute("appointmentRequest", new AppointmentRequestDTO());
-        return "appointment-form";
+        return "Appointment/appointment-form";
     }
 
     @PostMapping
@@ -34,7 +33,7 @@ public class AppointmentController {
         } catch (IllegalArgumentException e) {
             model.addAttribute("errorMessage", e.getMessage());
             model.addAttribute("appointmentRequest", requestDTO);
-            return "appointment-form"; // 예약 실패 시 페이지
+            return "Appointment/appointment-form"; // 예약 실패 시 페이지
         }
     }
 }
