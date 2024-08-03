@@ -1,1 +1,22 @@
-작성중...
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointment Form</title>
+</head>
+<body>
+<h1>Appointment Form</h1>
+<form action="#" th:action="@{/appointment-form}" th:object="${appointmentRequest}" method="post">
+    <label for="date">Date:</label>
+    <input type="date" id="date" th:field="*{date}" required />
+    <br/>
+    <label for="time">Time:</label>
+    <input type="time" id="time" th:field="*{time}" required />
+    <br/>
+    <label for="description">Description:</label>
+    <textarea id="description" th:field="*{description}" required></textarea>
+    <br/>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
