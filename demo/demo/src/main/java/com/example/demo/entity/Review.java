@@ -1,37 +1,34 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
-import java.time.LocalDateTime;
 @Entity
 public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "review_id")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "appointment_id", nullable = false)
     private Appointment appointment;
 
-    @Column(nullable = false)
     private String content;
 
-    @Column(name = "created_date")
-    private LocalDateTime createdDate;
-
-    // 생성자
+    // Default constructor
     public Review() {
     }
 
+    // Constructor with parameters
     public Review(Appointment appointment, String content) {
         this.appointment = appointment;
         this.content = content;
-        this.createdDate = LocalDateTime.now();
     }
 
-    // getter, setter
+    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -54,13 +51,5 @@ public class Review {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
     }
 }

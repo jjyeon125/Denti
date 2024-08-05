@@ -1,6 +1,9 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 import java.time.LocalDateTime;
 
@@ -8,33 +11,21 @@ import java.time.LocalDateTime;
 public class Appointment {
 
     @Id
-    @Column(name = "Appointment_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_no", nullable = false)
-    private  Users user;
-
-    @ManyToOne
-    @JoinColumn(name = "dentist_id", nullable = false)
-    private Dentist dentist;
+    private Long userId;
 
     private LocalDateTime appointmentDateTime;
 
+    private String description;
 
+    // Other fields...
 
+    // Default constructor
+    public Appointment() {}
 
-    public Appointment() {
-        // 기본 생성자
-    }
-
-    public Appointment(Users user, Dentist dentist, LocalDateTime appointmentDateTime) {
-        this.user = user;
-        this.dentist = dentist;
-        this.appointmentDateTime = appointmentDateTime;
-    }
-
+    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -43,20 +34,12 @@ public class Appointment {
         this.id = id;
     }
 
-    public Users getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(Users user) {
-        this.user = user;
-    }
-
-    public Dentist getDentist() {
-        return dentist;
-    }
-
-    public void setDentist(Dentist dentist) {
-        this.dentist = dentist;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public LocalDateTime getAppointmentDateTime() {
@@ -66,4 +49,14 @@ public class Appointment {
     public void setAppointmentDateTime(LocalDateTime appointmentDateTime) {
         this.appointmentDateTime = appointmentDateTime;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    // Other getters and setters...
 }

@@ -1,39 +1,42 @@
 package com.example.demo.reservation.controller;
 
-import com.example.demo.reservation.Service.AppointmentService;
 import com.example.demo.entity.Appointment;
-import com.example.demo.dto.AppointmentRequestDTO;
-import jakarta.validation.Valid;
+import com.example.demo.reservation.Service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Controller
-@RequestMapping("/appointment-form")
 public class AppointmentController {
 
     @Autowired
     private AppointmentService appointmentService;
 
-    @GetMapping
+    @GetMapping("/appointment-form")
     public String showAppointmentForm(Model model) {
-        model.addAttribute("appointmentRequest", new AppointmentRequestDTO());
+        model.addAttribute("appointment", new Appointment());
         return "Appointment/appointment-form";
     }
 
-    @PostMapping
-    public String createAppointment(@Valid AppointmentRequestDTO requestDTO, Model model) {
-        try {
-            Appointment appointment = appointmentService.createAppointment(requestDTO);
-            model.addAttribute("appointment", appointment);
-            return "appointment-success"; // 예약 성공 후 페이지
-        } catch (IllegalArgumentException e) {
-            model.addAttribute("errorMessage", e.getMessage());
-            model.addAttribute("appointmentRequest", requestDTO);
-            return "Appointment/appointment-form"; // 예약 실패 시 페이지
-        }
+    @GetMapping("/appointments")
+    public String listAppointments(Model model) {
+        List<Appointment> appointments = appointmentService.getAllAppointments();
+        model.addAttribute("appointments", appointments);
+        return "Appointment/appointments";
+    }
+
+    @PostMapping("/appointment-success")
+    public String createAppointment(@ModelAttribute Appointment appointment, @ModelAttribute("appointmentDateTime") String appointmentDateTime) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        appointment.setAppointmentDateTime(LocalDateTime.parse(appointmentDateTime, formatter));
+        appointmentService.createAppointment(appointment);
+        return "Appointment/appointment-success"; // Ensure this view exists
     }
 }

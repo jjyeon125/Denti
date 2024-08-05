@@ -1,9 +1,7 @@
 package com.example.demo.dentist.controller;
 
-
 import com.example.demo.dentist.service.DentistReservationService;
 import com.example.demo.entity.Dentist;
-import com.example.demo.review.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +14,6 @@ public class DentistController {
 
     @Autowired
     private DentistReservationService dentistReservationService;
-
-    @Autowired
-    private ReviewService reviewService;
 
     @GetMapping
     public String listDentists(Model model) {
@@ -43,7 +38,6 @@ public class DentistController {
     public String viewDentist(@PathVariable Long id, Model model) {
         Dentist dentist = dentistReservationService.getDentistById(id);
         model.addAttribute("dentist", dentist);
-        model.addAttribute("reviews", reviewService.getReviewsForDentist(id));
         return "doctor-view";
     }
 
@@ -60,7 +54,6 @@ public class DentistController {
         return "redirect:/dentists";
     }
 
-
     @GetMapping("/")
     public String index(Model model) {
         return "index"; // 메인 페이지
@@ -68,8 +61,8 @@ public class DentistController {
 
     @GetMapping("/dentist")
     public String searchDentist(@RequestParam(required = false) String name,
-                                  @RequestParam(required = false) String category,
-                                  Model model) {
+                                @RequestParam(required = false) String category,
+                                Model model) {
         List<Dentist> dentists;
 
         if (name != null && !name.isEmpty()) {
@@ -84,5 +77,4 @@ public class DentistController {
         model.addAttribute("address", dentists.isEmpty() ? "" : dentists.get(0).getAddress());
         return "index"; // 검색 결과를 보여주는 페이지
     }
-
 }

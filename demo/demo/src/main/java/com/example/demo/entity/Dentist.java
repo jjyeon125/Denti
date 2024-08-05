@@ -1,29 +1,33 @@
 package com.example.demo.entity;
 
-
 import jakarta.persistence.*;
 
-@Entity(name = "ReservationDentist")
-
+@Entity
+@Table(name = "dentists")
 public class Dentist {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "dentist_id")
     private Long id;
 
+    @Column(name = "doc_no")
+    private Long docNo;
+
+    @Column(name = "name")
     private String name;
-    private String category;
-    private String contents;
+
+    @Column(name = "address")
     private String address;
 
-    public String getAddress() {
-        return address;
-    }
+    @Column(name = "category")
+    private String category;
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    @Column(name = "latitude")
+    private double latitude;
+
+    @Column(name = "longitude")
+    private double longitude;
+
+    // getters and setters
 
     public Long getId() {
         return id;
@@ -31,6 +35,14 @@ public class Dentist {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getDocNo() {
+        return docNo;
+    }
+
+    public void setDocNo(Long docNo) {
+        this.docNo = docNo;
     }
 
     public String getName() {
@@ -41,6 +53,14 @@ public class Dentist {
         this.name = name;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getCategory() {
         return category;
     }
@@ -48,10 +68,20 @@ public class Dentist {
     public void setCategory(String category) {
         this.category = category;
     }
-    public String getContents() {
-        return contents;
+
+    public double getLatitude() {
+        return latitude;
     }
 
-    public void setContents(String contents) {
-        this.contents = contents;
-    }}
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+}

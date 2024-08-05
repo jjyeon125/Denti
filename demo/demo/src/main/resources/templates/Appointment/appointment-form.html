@@ -1,22 +1,57 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Appointment Form</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #map { height: 400px; width: 100%; }
+    </style>
 </head>
 <body>
 <h1>Appointment Form</h1>
-<form action="#" th:action="@{/appointment-form}" th:object="${appointmentRequest}" method="post">
-    <label for="date">Date:</label>
-    <input type="date" id="date" th:field="*{date}" required />
-    <br/>
-    <label for="time">Time:</label>
-    <input type="time" id="time" th:field="*{time}" required />
-    <br/>
-    <label for="description">Description:</label>
-    <textarea id="description" th:field="*{description}" required></textarea>
-    <br/>
+<form action="/createAppointment" method="post" th:action="@{/appointment-success}" th:object="${appointment}">
+    <div>
+        <label for="appointmentDateTime">Appointment Date and Time:</label>
+        <input type="datetime-local" id="appointmentDateTime" name="appointmentDateTime" required />
+    </div>
+    <div>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea>
+    </div>
+    <div id="map"></div>
     <button type="submit">Submit</button>
 </form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var map = L.map('map').setView([37.5665, 126.9780], 13); // 서울을 중심으로 지도 설정
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Nominatim API를 사용하여 치과 데이터 가져오기
+        $.get('https://nominatim.openstreetmap.org/search', {
+            q: 'dentist in Seoul',
+            format: 'json',
+            limit: 10
+        }, function(data) {
+            var dentistMarkers = data.map(function(dentist, index) {
+                return {
+                    id: index + 1, // 각 치과에 고유 id 생성
+                    name: dentist.display_name,
+                    lat: dentist.lat,
+                    lng: dentist.lon
+                };
+            });
+
+            dentistMarkers.forEach(function(dentist) {
+                var marker = L.marker([dentist.lat, dentist.lng]).addTo(map);
+                marker.bindPopup(dentist.name);
+            });
+        });
+    });
+</script>
 </body>
 </html>
