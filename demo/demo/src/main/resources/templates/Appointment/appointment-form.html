@@ -1,24 +1,39 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Appointment Form</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <style>
+            @font-face {
+                font-family: 'Pretendard-Regular';
+                src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+                font-weight: 400;
+                font-style: normal;
+            }
+            *{
+                text-align: center;
+                font-family: 'Pretendard-Regular';
+            }
+            #map{
+                margin: auto;
+            }
+        </style>
     <style>
-        #map { height: 400px; width: 100%; }
+        #map { height: 400px; width: 500px;}
     </style>
 </head>
 <body>
 <h1>Appointment Form</h1>
 <form action="/createAppointment" method="post" th:action="@{/appointment-success}" th:object="${appointment}">
     <div>
-        <label for="appointmentDateTime">Appointment Date and Time:</label>
+        <label for="appointmentDateTime"></label>
         <input type="datetime-local" id="appointmentDateTime" name="appointmentDateTime" required />
     </div>
     <div>
-        <label for="description">Description:</label>
-        <textarea id="description" name="description"></textarea>
+        <label for="description"></label>
+        <textarea id="description" name="description" placeholder="방문 사유를 작성해주세요"></textarea>
     </div>
     <div id="map"></div>
     <button type="submit">Submit</button>

@@ -37,6 +37,6 @@ public class AppointmentController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
         appointment.setAppointmentDateTime(LocalDateTime.parse(appointmentDateTime, formatter));
         appointmentService.createAppointment(appointment);
-        return "Appointment/appointment-success"; // Ensure this view exists
+        return "Appointment/appointment-success";
     }
 }

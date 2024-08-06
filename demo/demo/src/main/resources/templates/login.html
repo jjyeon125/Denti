@@ -3,19 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>User Login</title>
+        <style>
+            @font-face {
+                font-family: 'Pretendard-Regular';
+                src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+                font-weight: 400;
+                font-style: normal;
+            }
+
+            *{
+                text-align: center;
+                font-family: 'Pretendard-Regular';
+            }
+            body{
+                width: 600px;
+                margin: auto;
+                margin-top: 20%;
+            }
+            input[type=text], input[type=password]{
+                width: 280px;
+                height: 30px;
+                border-radius: 10px;
+                border: 1px solid #D7DCDF;
+                text-align: left;
+                padding-left:10px;
+
+            }
+            input[type=submit]{
+                margin: auto;
+                border-radius: 10px;
+                width: 290px;
+                height: 40px;
+                background-color: #467AFF;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 0;
+                color: white;
+            }
+            a{
+                text-decoration: none;
+                margin: 0;
+            }
+        </style>
 </head>
 <body>
-<h1>User Login Page</h1>
+<h1>로그인</h1>
 <form action="/login" method="post">
-    <label for="userId">ID:</label>
-    <input type="text" id="userId" name="userId" required><br><br>
-    <label for="userPwd">Password:</label>
-    <input type="password" id="userPwd" name="userPwd" required><br><br>
+    <label for="userId"></label>
+    <input type="text" id="userId" name="userId" placeholder="아이디" required><br><br>
+    <label for="userPwd"></label>
+    <input type="password" id="userPwd" name="userPwd" placeholder="비밀번호" required><br><br>
     <input type="submit" value="Login">
 </form>
 <div th:if="${loginError}" style="color: red;">
     <p th:text="${loginError}"></p>
 </div>
-<br><br><a href="/register">회원가입</a>
+<a href="/register">회원가입</a>
 </body>
 </html>
